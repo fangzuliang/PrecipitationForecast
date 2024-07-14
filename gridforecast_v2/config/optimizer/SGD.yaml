@@ -1,0 +1,6 @@
+# https://pytorch.org/docs/stable/generated/torch.optim.SGD.html#torch.optim.SGD
+name: SGD
+config:
+  lr: 0.001
+  momentum: 0
+  weight_decay: 0.001

@@ -1,0 +1,9 @@
+name: inference_wrapper_gan_v2
+config:
+  display_interval: 25
+  gen_checkpoint_path: null
+  dis_checkpoint_path: null
+  gen_loss_weight: 50
+  dis_loss_weight: 1
+  if_mask: False
+  mask_weight_dict: null

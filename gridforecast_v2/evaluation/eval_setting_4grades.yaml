@@ -1,0 +1,55 @@
+binary_method:
+  HFMC:
+    method: hfmc
+    parameter:
+      grade_list: [0.1, 10, 20, 50]
+      compare: ">="
+  TS:
+    method: ts_hfmc
+  ETS:
+    method: ets_hfmc
+  FAR:
+    method: far_hfmc
+  MAR:
+    method: mar_hfmc
+  POD:
+    method: pod_hfmc
+  SR:
+    method: sr_hfmc
+  BIAS:
+    method: bias_hfmc
+  F1:
+    method: f1_hfmc
+  ACC:
+    method: acc_hfmc
+  HSS:
+    method: hss_hfmc
+  OBS1_RATIO:
+    method: obs1_ratio_hfmc
+  PRE1_RATIO:
+    method: pre1_ratio_hfmc
+
+
+spatial_method:
+  FSS:
+    method: fss
+    parameter:
+      half_window_size_list: [1, 2, 3, 4, 5]
+      grade_list: [0.1, 10, 20, 50]
+      compare: ">="
+
+
+continuous_method:
+  MAE:
+    method: mae
+  MSE:
+    method: mse
+  RMSE:
+    method: rmse
+
+
+cv_method:
+  SSIM:
+    method: ssim
+  # PSNR:
+  #   method: psnr

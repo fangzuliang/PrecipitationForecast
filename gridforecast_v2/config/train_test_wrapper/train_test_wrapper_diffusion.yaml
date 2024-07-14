@@ -1,0 +1,20 @@
+name: train_test_wrapper_diffusion
+config:
+  checkpoint_path: null
+  num_epochs: 200
+  patience: 20
+  display_interval: 25
+  gradient_clipping: False
+  clipping_threshold: 3
+  init_type: 'kaimin'
+  beta_schedule:
+    train:
+      schedule: cosine
+      n_timestep: 1000
+      linear_start: 1e-6
+      linear_end: 1e-2
+    val:
+      schedule: cosine
+      n_timestep: 100
+      linear_start: 1e-6
+      linear_end: 1e-2

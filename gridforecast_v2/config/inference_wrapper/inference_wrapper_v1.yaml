@@ -1,0 +1,6 @@
+name: inference_wrapper_v1
+config:
+  display_interval: 25
+  if_mask: False
+  mask_weight_dict: null
+  checkpoint_path: null

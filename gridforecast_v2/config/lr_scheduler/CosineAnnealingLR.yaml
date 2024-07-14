@@ -1,0 +1,5 @@
+# https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=lr_scheduler
+name: CosineAnnealingLR
+config:
+  T_max: 10
+  eta_min: 5e-8

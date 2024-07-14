@@ -1,0 +1,23 @@
+name: swin_unet
+config:
+  img_size: 192
+  patch_size: 4
+  in_chans: 13
+  out_chans: 1
+  embed_dim: 32
+  depths: [2, 2, 2]
+  depths_decoder: [1, 2, 2]
+  num_heads: [2, 4, 4]
+  window_size: 6
+  mlp_ratio: 4
+  qkv_bias: true
+  qk_scale: null
+  drop_rate: 0
+  attn_drop_rate: 0
+  drop_path_rate: 0.1
+  ape: False
+  patch_norm: True
+  use_checkpoint: False
+  final_upsample: expand_first
+  act_final: ReLU
+  expand_5d: False

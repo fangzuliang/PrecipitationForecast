@@ -1,0 +1,140 @@
+
+Target:
+  path: /THL8/home/zhq/data/Fusion_data/CMPA/CMPA5_V3_nc/HOR/NRT_0.05_15-60_70-140_UTC
+  index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/CMPAS_index/all_NRT_2021_index.csv
+  variables:
+    value: {'raw_name': 'rain', 'mu': 0, 'scale': 90}
+    mask: {'raw_name': 'mask'}
+  target_valid_time_bias: '0h' # 0h normally and -1h just for precipitation
+
+
+EC:
+  rain:
+    path: /THL8/home/zhq/data/NWP_data/EC/EC_V3_nc/ecmwf_nc_0.05_31-45_108-124_r3
+    index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/EC_index/all_EC_rain_2021_index.csv
+    time:
+      time_res: 3
+      past_lead_time: 3
+      future_lead_time: 3
+    variables:
+      rain: {'use': 1, 'group': 1, 'raw_name': 'rain', 'mu': 0, 'scale': 90, 'decoder_input': True}
+
+  surface:
+    path: /THL8/home/zhq/data/NWP_data/EC/EC_V3_nc/ecmwf_nc_0.05_31-45_108-124
+    index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/EC_index/all_EC_surface_2021_index.csv
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t2m: {'use': 1, 'group': 2, 'raw_name': 't2m', 'operation': '- 273.15', 'mean': 0.5, 'std': 0.25}
+      d2m: {'use': 1, 'group': 2, 'raw_name': 'd2m', 'operation': '- 273.15', 'mean': 0.5, 'std': 0.25}
+      cape: {'use': 1, 'group': 2, 'raw_name': 'tcc', 'operation': '* 100'}
+
+  pressure:
+    path: /THL8/home/zhq/data/NWP_data/EC/EC_V3_nc/ecmwf_nc_0.05_31-45_108-124
+    index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/EC_index/all_EC_pressure_2021_index.csv
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 1, 'group': 3, 'raw_name': 't', 'operation': '- 273.15', 'level': [200, 500]}
+      q: {'use': 1, 'group': 3, 'raw_name': 'q', 'operation': '- 273.15', 'level': [500, 700, 850]}
+
+
+SMS:
+  rain:
+    path: /THL8/home/zhq/data/NWP_data/SMS/SMS_V3_nc/SMS_nc_0.05_31-45_108-124_r1
+    index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/SMS_index/all_SMS_rain_2021_index.csv
+    time:
+      time_res: 1
+      past_lead_time: 1
+      future_lead_time: 1
+    variables:
+      rain: {'use': 1, 'group': 4, 'raw_name': 'rain', 'mu': 0, 'scale': 90}
+
+  surface:
+    path: /THL8/home/zhq/data/NWP_data/SMS/SMS_V3_nc/SMS_nc_0.05_31-45_108-124
+    # index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/SMS_index/all_SMS_surface_2021_index.csv
+    time:
+      time_res: 1
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 1, 'group': 1, 'raw_name': 'TMP_P0_L103_GLC0'}
+      rh: {'use': 1, 'group': 1, 'raw_name': 'RH_P0_L103_GLC0'}
+      cape: {'use': 1, 'group': 1, 'raw_name': 'CAPE_P0_L1_GLC0'}
+      cin: {'use': 1, 'group': 6, 'raw_name': 'CIN_P0_L1_GLC0'}
+      refc: {'use': 1, 'group': 7, 'raw_name': 'REFC_P0_L10_GLC0'}
+
+  pressure:
+    path: /THL8/home/zhq/data/NWP_data/SMS/SMS_V3_nc/SMS_nc_0.05_31-45_108-124
+    # index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/SMS_index/all_SMS_pressure_2021_index.csv
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 1, 'group': 1, 'raw_name': 'TMP_P0_L100_GLC0', 'level': [925, 200]}
+
+
+GRAPES:
+  rain:
+    path: /THL8/home/zhq/data/NWP_data/GRAPES/GRAPES_V3_nc/GRAPES_nc_0.05_31-45_108-124_r1
+    # index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/GRAPES_index/all_GRAPES_rain_2021_index.csv
+    time:
+      time_res: 1
+      past_lead_time: 1
+      future_lead_time: 1 
+    variables:
+      rain: {'use': 1, 'group': 1, 'raw_name': 'rain', 'mu': 0, 'scale': 90}
+
+  surface:
+    path: /THL8/home/zhq/data/NWP_data/GRAPES/GRAPES_V3_nc/GRAPES_nc_0.05_31-45_108-124
+    # index_file: /THL8/home/zhq/fzl/branch/forecast/gridforecast_v2/data_pipelines/dataloader_v1/GRAPES_index/all_GRAPES_rain_2021_index.csv
+    time:
+      time_res: 1
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 1, 'group': 1, 'raw_name': 'TMP_P0_L103_GLL0'}
+      rh: {'use': 1, 'group': 1, 'raw_name': 'RH_P0_L103_GLL0'}
+
+
+META:
+  loc_range: [32, 45, 110, 122]
+  aim_size: [192, 192]
+  slide: False
+  res: 0.05
+  path: /THL8/home/zhq/data/geo_data/topography_15-55_70-135_0.05.nc
+  variables:
+    lon: {'group': 5, 'use': 1}
+    lat: {'group': 5, 'use': 1}
+    z: {'group': 5, 'use': 1}
+    slor: {'group': 6, 'use': 1}
+    sdfor: {'group': 6, 'use': 1}
+    sdor: {'group': 6, 'use': 1}
+    anor: {'group': 6, 'use': 1}
+    isor: {'group': 6, 'use': 0}
+    d2c: {'group': 6, 'use': 0}
+    lsm: {'group': 6, 'use': 1}
+    lc: {'group': 6, 'use': 1}
+    dl: {'group': 6, 'use': 0}
+    cl: {'group': 6, 'use': 0}
+    slt: {'group': 6, 'use': 0}
+    cvh: {'group': 6, 'use': 0}
+    cvl: {'group': 6, 'use': 0}
+    tvh: {'group': 6, 'use': 0}
+    tvl: {'group': 6, 'use': 0}
+
+Time:
+  variables: 
+    leadtime_sin: {'group': 7, 'use': 1}
+    leadtime_cos: {'group': 7, 'use': 1}
+    cycle_sin: {'group': 7, 'use': 1}
+    cycle_cos: {'group': 7, 'use': 1}
+    day_sin: {'group': 7, 'use': 1}
+    day_cos: {'group': 7, 'use': 1}
+    month_sin: {'group': 7, 'use': 1}
+    month_cos: {'group': 7, 'use': 1}

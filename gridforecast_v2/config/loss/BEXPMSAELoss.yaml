@@ -1,0 +1,6 @@
+name: BEXPMSAELoss
+config:
+  a: 4.3
+  b: 0.8
+  mse_w: 1
+  mae_w: 1

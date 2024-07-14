@@ -1,0 +1,23 @@
+defaults:
+  - train_test_wrapper: train_test_wrapper_v1
+  - dataloader/train: dataloader_v1
+  - dataloader/valid: dataloader_v1
+  - dataloader/test: dataloader_v1
+  - model: unet_2d
+  - loss: BMSAELoss
+  - optimizer: AdamW
+  - lr_scheduler: CosineAnnealingLR
+  - environment: hpc4
+  - _self_
+
+
+dataloader:
+  name: dataloader_v1
+  batch_size: 16
+  num_workers: 4
+
+hydra:
+  run:
+    dir: ${output_dir}
+
+output_dir: /fs1/home/zhq/users/fzl/experiments/hydra_experiment/${model.name}_${now:%Y-%m-%d}_train/${now:%H-%M-%S}

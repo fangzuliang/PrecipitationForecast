@@ -1,0 +1,7 @@
+# https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.ReduceLROnPlateau.html?highlight=lr_scheduler
+name: ReduceLROnPlateau
+config:
+  mode: min
+  factor: 0.25
+  patience: 3
+  min_lr: 0

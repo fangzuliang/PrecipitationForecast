@@ -1,0 +1,13 @@
+name: train_test_wrapper_v1
+config:
+  checkpoint_path: null
+  num_epochs: 200
+  patience: 20
+  display_interval: 25
+  gradient_clipping: False
+  clipping_threshold: 3
+  if_initial: True
+  if_swa: False
+  start_swa: 5
+  if_mask: False
+  mask_weight_dict: null

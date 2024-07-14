@@ -1,0 +1,4 @@
+name: BCELoss
+config:
+  weight: null
+  reduction: mean
