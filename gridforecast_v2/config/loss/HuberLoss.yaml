@@ -1,0 +1,5 @@
+# https://pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html?highlight=loss#torch.nn.HuberLoss
+name: HuberLoss 
+config:
+  reduction: 'mean'
+  delta: 1

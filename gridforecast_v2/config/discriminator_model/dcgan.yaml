@@ -1,0 +1,5 @@
+name: dcgan_discriminator
+config:
+  base_dim: 32
+  layer: 4
+  input_size: [192, 192]

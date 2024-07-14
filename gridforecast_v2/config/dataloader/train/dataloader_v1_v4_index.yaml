@@ -1,0 +1,50 @@
+defaults:
+  - data_feature: v1_feature4
+  - _self_
+
+cycle_list: 
+  - 0
+  - 12
+lead_time_list: [3, 6, 9, 12, 15, 18, 21, 24]
+if_channel: False
+sample_num: -1
+shuffle: True
+
+
+data_feature:
+  Target:
+    path: ${environment.Target_path}
+    index_file: ${environment.index_root}/CMPAS_index/35-45_112-122/v2_index/NRT_index_train_rain1_300.csv
+  OBS:
+    CMPAS:
+      path: ${environment.Target_path}
+      index_file: ${environment.index_root}/CMPAS_index/NRT_index_2017-2021.csv
+  EC:
+    rain:
+      path: ${environment.EC_path.rain}
+      index_file: ${environment.index_root}/EC_index/v2_index/EC_rain_index_train.csv
+    surface:
+    #   path: ${environment.EC_path.surface}
+    #   index_file: ${environment.index_root}/EC_index/v2_index/EC_surface_index_train.csv
+    pressure:
+      # path: ${environment.EC_path.pressure}
+      # index_file: ${environment.index_root}/EC_index/v2_index/EC_pressure_index_train.csv
+  SMS:
+    rain:
+      path: ${environment.SMS_path.rain}
+      index_file: ${environment.index_root}/SMS_index/v2_index/SMS_rain_index_train.csv
+    surface:
+    #   path: ${environment.SMS_path.surface}
+    #   index_file: ${environment.index_root}/SMS_index/v2_index/SMS_surface_index_train.csv
+    pressure:
+      # path: ${environment.SMS_path.pressure}
+      # index_file: ${environment.index_root}/SMS_index/v2_index/SMS_pressure_index_train.csv
+  GRAPES:
+    rain: 
+      path: ${environment.GRAPES_path.rain}
+      index_file: ${environment.index_root}/GRAPES_index/v2_index/GRAPES_rain_index_train.csv
+    surface:
+      # path: ${environment.GRAPES_path.surface}
+      # index_file: ${environment.index_root}/GRAPES_index/v2_index/GRAPES_surface_index_train.csv
+  META:
+    path: ${environment.META_path}

@@ -1,0 +1,18 @@
+name: train_test_wrapper_v2
+config:
+  gen_step: 1
+  dis_step: 1
+  gen_loss_weight: 20
+  dis_loss_weight: 1
+  gen_checkpoint_path: null
+  dis_checkpoint_path: null
+  num_epochs: 200
+  patience: 20
+  display_interval: 25
+  gradient_clipping: False
+  clipping_threshold: 3
+  if_initial: True
+  if_swa: False
+  start_swa: 5
+  if_mask: False
+  mask_weight_dict: null

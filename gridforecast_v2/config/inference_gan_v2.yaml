@@ -1,0 +1,22 @@
+defaults:
+  - inference_wrapper: inference_wrapper_gan_v2
+  - dataloader/test: dataloader_v1
+  - model: unet_2d
+  - loss: BMSAELoss
+  - discriminator_model: dcgan
+  - discriminator_loss: BCELoss
+  - environment: hpc4
+  - _self_
+
+
+dataloader:
+  name: dataloader_v1
+  batch_size: 8
+  num_workers: 4
+
+hydra:
+  run:
+    dir: ${output_dir}
+
+input_dir: /THL8/home/zhq/fzl/hydra_experiment/unet_2d_2022-05-29_train/14-27-59
+output_dir: ${input_dir}/test/${now:%H-%M-%S}

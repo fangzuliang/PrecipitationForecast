@@ -1,0 +1,122 @@
+
+Target:
+  variables:
+    value: {'raw_name': 'r3', 'mu': 30, 'scale': 30}
+    mask: {'raw_name': 'mask'}
+  target_valid_time_bias: '0h' # 0h normally and -1h just for precipitation
+
+
+EC:
+  rain:
+    time:
+      time_res: 3
+      past_lead_time: 3
+      future_lead_time: 3
+    variables:
+      rain: {'use': 1, 'group': 1, 'raw_name': 'r3', 'mu': 30, 'scale': 30, 'decoder_input': False}
+
+  surface:
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t2m: {'use': 0, 'group': 2, 'raw_name': 't2m', 'operation': '- 273.15', 'mean': 0.5, 'std': 0.25}
+      d2m: {'use': 0, 'group': 2, 'raw_name': 'd2m', 'operation': '- 273.15', 'mean': 0.5, 'std': 0.25}
+      cape: {'use': 0, 'group': 2, 'raw_name': 'tcc', 'operation': '* 100'}
+
+  pressure:
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 0, 'group': 3, 'raw_name': 't', 'operation': '- 273.15', 'level': [200, 500]}
+      q: {'use': 0, 'group': 3, 'raw_name': 'q', 'operation': '- 273.15', 'level': [500, 700, 850]}
+
+
+SMS:
+  rain:
+    time:
+      time_res: 1
+      past_lead_time: 3
+      future_lead_time: 3
+    variables:
+      rain: {'use': 1, 'group': 4, 'raw_name': 'r3', 'mu': 30, 'scale': 30, 'decoder_input': False}
+
+  surface:
+    time:
+      time_res: 1
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 0, 'group': 5, 'raw_name': 'TMP_P0_L103_GLC0'}
+      rh: {'use': 0, 'group': 5, 'raw_name': 'RH_P0_L103_GLC0'}
+      cape: {'use': 0, 'group': 5, 'raw_name': 'CAPE_P0_L1_GLC0'}
+      cin: {'use': 0, 'group': 5, 'raw_name': 'CIN_P0_L1_GLC0'}
+      refc: {'use': 0, 'group': 5, 'raw_name': 'REFC_P0_L10_GLC0'}
+
+  pressure:
+    time:
+      time_res: 3
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 0, 'group': 6, 'raw_name': 'TMP_P0_L100_GLC0', 'level': [925, 200]}
+
+
+GRAPES:
+  rain:
+    time:
+      time_res: 1
+      past_lead_time: 3
+      future_lead_time: 3
+    variables:
+      rain: {'use': 1, 'group': 7, 'raw_name': 'r3', 'mu': 30, 'scale': 30, 'decoder_input': False}
+
+  surface:
+    time:
+      time_res: 1
+      past_lead_time: 0
+      future_lead_time: 0
+    variables:
+      t: {'use': 0, 'group': 8, 'raw_name': 'TMP_P0_L103_GLL0'}
+      rh: {'use': 0, 'group': 8, 'raw_name': 'RH_P0_L103_GLL0'}
+
+
+META:
+  loc_range: [35, 45, 112, 122]
+  input_size: [192, 192]
+  slide: False
+  res: 0.05
+  # path: /THL8/home/zhq/data/geo_data/topography_15-55_70-135_0.05.nc
+  variables:
+    lon: {'group': 9, 'use': 1}
+    lat: {'group': 9, 'use': 1}
+    z: {'group': 9, 'use': 1}
+    slor: {'group': 9, 'use': 0}
+    sdfor: {'group': 9, 'use': 0}
+    sdor: {'group': 9, 'use': 0}
+    anor: {'group': 9, 'use': 0}
+    d2c: {'group': 9, 'use': 0}
+    lsm: {'group': 9, 'use': 0}
+    lc: {'group': 9, 'use': 0}
+    isor: {'group': 9, 'use': 0}
+    dl: {'group': 9, 'use': 0}
+    cl: {'group': 9, 'use': 0}
+    slt: {'group': 9, 'use': 0}
+    cvh: {'group': 9, 'use': 0}
+    cvl: {'group': 9, 'use': 0}
+    tvh: {'group': 9, 'use': 0}
+    tvl: {'group': 9, 'use': 0}
+
+Time:
+  variables: 
+    leadtime_sin: {'group': 10, 'use': 1}
+    leadtime_cos: {'group': 10, 'use': 1}
+    cycle_sin: {'group': 10, 'use': 1}
+    cycle_cos: {'group': 10, 'use': 1}
+    day_sin: {'group': 10, 'use': 0}
+    day_cos: {'group': 10, 'use': 0}
+    month_sin: {'group': 10, 'use': 0}
+    month_cos: {'group': 10, 'use': 0}

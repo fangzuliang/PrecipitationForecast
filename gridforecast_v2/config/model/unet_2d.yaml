@@ -1,0 +1,13 @@
+name: unet_2d
+config:
+  in_dim_list: [1, 2, 3]
+  out_dim: 1
+  base_dim: 32
+  layer: 4
+  up_mode: 'upsample'
+  atten_mode: 'SENet'
+  compose_type: 'add'
+  ASPP: 0
+  act_final: 'ReLU6'
+  act_last: True
+  in_out_size_ratio: [1, 1]

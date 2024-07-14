@@ -1,0 +1,46 @@
+defaults:
+  - data_feature: v1_feature1
+  - _self_
+
+cycle_list:
+  - 0
+  - 12
+lead_time_list: [3, 6, 9, 12, 15, 18, 21, 24]
+if_channel: False
+sample_num: -1
+shuffle: True
+
+
+data_feature:
+  Target:
+    path: ${environment.Target_path}
+    index_file: ${environment.index_root}/CMPAS_index/NRT_index_valid.csv
+  EC:
+    rain:
+      path: ${environment.EC_path.rain}
+      index_file: ${environment.index_root}/EC_index/EC_rain_index_valid.csv
+    surface:
+    #   path: ${environment.EC_path.surface}
+    #   index_file: ${environment.index_root}/EC_index/EC_surface_index_valid.csv
+    pressure:
+      # path: ${environment.EC_path.pressure}
+      # index_file: ${environment.index_root}/EC_index/EC_pressure_index_valid.csv
+  SMS:
+    rain:
+      path: ${environment.SMS_path.rain}
+      index_file: ${environment.index_root}/SMS_index/SMS_rain_index_valid.csv
+    surface:
+    #   path: ${environment.SMS_path.surface}
+    #   index_file: ${environment.index_root}/SMS_index/SMS_surface_index_valid.csv
+    pressure:
+      # path: ${environment.SMS_path.pressure}
+      # index_file: ${environment.index_root}/SMS_index/SMS_pressure_index_valid.csv
+  GRAPES:
+    rain: 
+      path: ${environment.GRAPES_path.rain}
+      index_file: ${environment.index_root}/GRAPES_index/GRAPES_rain_index_valid.csv
+    surface:
+      # path: ${environment.GRAPES_path.surface}
+      # index_file: ${environment.index_root}/GRAPES_index/GRAPES_surface_index_valid.csv
+  META:
+    path: ${environment.META_path}

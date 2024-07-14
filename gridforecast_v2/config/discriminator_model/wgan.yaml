@@ -1,0 +1,4 @@
+name: wgan_discriminator
+config:
+  channels_img: 1
+  features_d: 32

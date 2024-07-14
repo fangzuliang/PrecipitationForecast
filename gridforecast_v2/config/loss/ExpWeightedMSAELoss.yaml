@@ -1,0 +1,6 @@
+name: ExpWeightedMSAELoss
+config:
+  b: 4
+  c: 0.4
+  mse_w: 1
+  mae_w: 1

@@ -1,0 +1,8 @@
+name: BMSAELoss
+config:
+  weights: [1, 2, 5, 10, 15, 20, 25, 30]
+  thresholds: [1, 5, 10, 20, 30, 40, 50, 90]
+  max_value: 90
+  if_log: False
+  mse_w: 1
+  mae_w: 1

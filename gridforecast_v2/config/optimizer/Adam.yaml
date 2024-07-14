@@ -1,0 +1,7 @@
+# https://pytorch.org/docs/stable/generated/torch.optim.Adam.html#torch.optim.Adam
+name: Adam
+config:
+  lr: 0.001
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 0
