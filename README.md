@@ -17,26 +17,50 @@ Accurate short-term rainfall forecasting is crucial for societal and economic ac
 ![alt text](image-2.png)
 
 
-3. Code Pipeline
+3. Data Introduction
+    Due to the large data size, we store the data here [Data](https://www.scidb.cn/en/detail?dataSetId=a42564aaec3340e982e997913b0baa48). Please follow gridforecast_v2/config/enrionment/hpc4.yaml formats requirement to reset your data and index file path.
+    ![Data Store](image-3.png)
+    - For example, you should decompress the ECMWF.tar.gz into {your local path}/NWP_data/EC/EC_V3_nc/ecmwf_nc_0.05_31-45_108-124_rain.
+
+
+4. Code Pipeline
     1. Pipeline Introduction
-        基于Pytorch框架完成整个工作流，同时借助Hydra工具实现了合理的模块化设计和便捷的参数控制.
-        将工作流解耦为如下几个模块：
-        - dataloader
-        - discriminator_loss
-        - discriminator_model
-        - environment
-        - inference_wrapper
-        - loss
-        - lr_scheduler
-        - model
-        - optimizer
-        - train_test_wrapper
-        整个Pipeline按照功能可分三大模块：训练 推断 评估.
-        其中 完整的训练和推断流又可以细分为：DataLoader Model Loss Optimizer 
-        
-        采样Hydra 来进行参数控制. 借助Hydra, 我们能将训练灵活设计了10个模块，
-        实现了训练，推断和评估三大功能
-        Pipeline
+        - The whole pipeline consists of three parts: training, inference and evaluation, among which the module involving deep learning is implemented based on the Pytorch framework.
+        - We use the [Hydra](https://github.com/facebookresearch/hydra) tool to achieve a reasonable modular design and convenient parameter control, the specific decoupling into the following modules:
+          - dataloader
+            - Implement multi-source data loading, necessary preprocessing, spatio-temporal alignment and partitioning of training sets, validation sets and test sets.
+          - loss
+            - loss functions, including many custom loss functions
+          - lr_scheduler
+            - Learning rate strategy
+          - model
+            - The model framework used by the generator, such as Unet
+          - optimizer
+            -  Which optimizer is used for model iteration
+          - discriminator_loss
+            - Loss function for discriminator
+          - discriminator_model
+            - The model structure used by the discriminator
+          - environment
+            - Specifies the path for storing the training data
+            - Specifies the path to the csv file used to index the data
+          - inference_wrapper
+            - Encapsulation of the model inference process
+          - train_test_wrapper
+            - Encapsulation of the model training process
+        Finally, we use src/factory.py to instantiate these modules.
+
+        - For evaluation part, we implement four types of evaluation methods
+          - binary method
+            - Including TS, FAR, POD, ETS Bias, F1 etcs.
+            - The above are point-wise evaluation.
+          - continuous method
+            - Including MSE, MAE, RMSE
+          - cv method
+            - Including SSIM, PSNR
+          - spatial method
+            - Including FSS.
+
     2. FRNet example
        1. Train
         ```
